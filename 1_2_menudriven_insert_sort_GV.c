@@ -103,25 +103,28 @@ void deleteEl(){
 		printf("Array is empty.Cannot perform deleteion");
 		
 	}
-	printf("Enter the element to be deleted : ");
-	scanf("%d",&del);
+	else{
+		printf("Enter the element to be deleted : ");
+		scanf("%d",&del);
 	
-	for(i=0;i<size;i++){
-		if(arr[i]==del){
-			found=1;
-			break;
+		for(i=0;i<size;i++){
+			if(arr[i]==del){
+				found=1;
+				break;
+			}
 		}
-	}
-	if(found){
-		//moving elements 
-		for(j=i;i<size-1;j++){
-			arr[j]=arr[j+1];
-		}size--;
-		printf("Element %d deleted.\n",del);
+		if(found==1){
+			//moving elements 
+			for(j=i;j<size-1;j++){
+				arr[j]=arr[j+1];
+			}size--;
+			printf("Element %d deleted.\n",del);
 	
-	}else{
-		printf("Element not found in array.Deletion failed\n");
-	}	
+		}else{
+			printf("Element not found in array.Deletion failed\n");
+		}	
+	}
+	
 }
 
 void sortArr(){
