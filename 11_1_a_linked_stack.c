@@ -1,4 +1,4 @@
-//PROGRAM 11_35 : Linked Stack
+//PROGRAM 11_1_a : Linked Stack
 #include<stdio.h>
 #include<malloc.h>
 
@@ -61,7 +61,7 @@ void push_to_linkedstack(int e){
     t=(stack *)malloc(sizeof(stack)); //allocating memory to new node 
     t->data=e; //copying data to new node
     t->next=top; //make the next of new node as current top. 
-    top=t; //assign the address in new node to top.
+    top=t; //assign the address of new node to top.
 }
 void pop_from_linkedstack(){
     if(top==NULL){

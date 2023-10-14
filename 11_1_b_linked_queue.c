@@ -1,4 +1,4 @@
-//PROGRAM 11_36 : Linked Queue
+//PROGRAM 11_1_b : Linked Queue
 #include<stdio.h>
 #include<malloc.h>
 
@@ -39,6 +39,7 @@ int main(){
         }
 
     }
+    return 0;
 }
 int menu(){
     int ch;
@@ -48,10 +49,11 @@ int menu(){
     return ch;
 }
 void enqueue_to_linkedqueue(int e){
-    queue *t=(queue *)malloc(sizeof(queue));
-    t->data=e;
-    t->next=NULL;
+    queue *t=(queue *)malloc(sizeof(queue));//allocate a new node
+    t->data=e;//copy the data to new node
+    t->next=NULL;//make next of new node as NULL
     if(f==NULL){
+        //assign new node address to f and r
         f=t;
         r=t;
     }
