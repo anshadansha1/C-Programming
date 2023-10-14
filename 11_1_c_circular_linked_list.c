@@ -106,6 +106,8 @@ void delete_from_cll(int e){
     }
 }
 
+
+//DISPLAY_2
 void disp(){
 	list *t;
 	if(head==NULL)
@@ -113,13 +115,13 @@ void disp(){
 	else{
 		t=head;
         printf("\nDisplaying Created Circular Linked List : \n");
-		while(t->next!=head){ //traversing until t->next becomes head
+		do{ 
 			printf("\t%d",t->data);
 			t=t->next;
-		}
-	}printf("\t%d\n",t->data); //To display the last element.
+		}while(t!=head);
+	}
 }
-//DISPLAY_2
+
 // void disp(){
 // 	list *t;
 // 	if(head==NULL)
@@ -127,9 +129,9 @@ void disp(){
 // 	else{
 // 		t=head;
 //         printf("\nDisplaying Created Circular Linked List : \n");
-// 		do{ 
+// 		while(t->next!=head){ //traversing until t->next becomes head
 // 			printf("\t%d",t->data);
 // 			t=t->next;
-// 		}while(t!=head);
-// 	}
+// 		}
+// 	}printf("\t%d\n",t->data); //To display the last element.
 // }
