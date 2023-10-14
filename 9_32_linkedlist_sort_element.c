@@ -81,7 +81,7 @@ void sort_by_swap_values(){
     }
     else{
         for(i=head;i!=NULL;i=i->next){
-            for(j=i;j->next!=NULL;j=j->next){
+            for(j=i;j!=NULL;j=j->next){
                 if(i->data > j->data){
                     temp=i->data;
                     i->data=j->data;
@@ -93,10 +93,38 @@ void sort_by_swap_values(){
     }
 
 }
-
 void sort_by_swap_address(){
+    struct node *i2, *j2, *temp2;
+    struct node *prev_i2 = NULL; // Pointer to the previous node of i2
+    if (head == NULL) {
+        printf("\nLinked list is Empty. Sorting NOT POSSIBLE.\n");
+    }
+    else {
+        for (i2 = head; i2 != NULL; i2 = i2->next) {
+            for (j2 = i2->next; j2 != NULL; j2 = j2->next) {
+                if (i2->data > j2->data) {
+                    // Swap the addresses (pointers) of current and index
+                    temp2 = i2->next;
+                    i2->next = j2->next;
+                    j2->next = temp2;
 
+                    // If head node is swapped, update the head
+                    if (i2 == head) {
+                        head = j2;
+                    }
+                    if (prev_i2 != NULL) {
+                        prev_i2->next = j2;
+                    }
+                    
+                }
+               prev_i2 = j2;
+               j2 = j2->next;
+            }
+        }
+        printf("\nSorting successfully completed by swapping addresses.\n");
+    }
 }
+
 
 void disp(){
 	struct node *t;
@@ -111,4 +139,3 @@ void disp(){
 		}
 	}printf("\n");
 }
-
