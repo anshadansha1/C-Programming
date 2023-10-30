@@ -1,4 +1,4 @@
-/*PROGRAM 9_29 :Write a program with functions  to insert a new node 
+/*PROGRAM 9_2 :Write a program with functions  to insert a new node 
 a.at the beginning of a Singly Linked List.
 b.At the end of the linked list
 c.after a specified element in a linked list.

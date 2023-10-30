@@ -1,4 +1,4 @@
-/*PROGRAM 9_30 :Write a program with functions to delete a node
+/*PROGRAM 9_3 :Write a program with functions to delete a node
 a.From the beginning of the linked list
 b.From the end of the linked list
 c.The node with specified data element

@@ -1,4 +1,4 @@
-/*PROGRAM 9_32 :Sort the elements in a linked list using
+/*PROGRAM 9_5 :Sort the elements in a linked list using
 a.changing the values (swapping the values)
 b.Changing the address (Swapping the address)
 */

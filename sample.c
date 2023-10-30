@@ -1,111 +1,73 @@
 #include <stdio.h>
-#include <malloc.h>
+#include <string.h>
+#include <math.h>
 
-struct node{
-    int data;
-    struct node *next;
-    struct node *prev;
-};
-struct node *head= NULL;
+#define MAX 100
 
-void insert(int e){
-    struct node *t;
-    if(head==NULL){
-        head=(struct node *)malloc(sizeof(struct node));
-        head->data=e;
-        head->next=NULL;
-        head->prev=NULL;
+char stk[MAX];
+int top=-1;
+
+void push(char x){
+    top++;
+    stk[top]=x;
+} 
+
+char pop(){
+    char y=stk[top];
+    top--;
+    return y;
+}
+
+int precedence(char k){
+    if(k=='^'){
+        return 3;
+    }
+    else if (k=='*' || k=='/'){
+        return 2;
+    }
+    else if(k=='+' || k=='-'){
+        return 1;
     }
     else{
-        t=head;
-        while(t->next!=NULL){
-            t=t->next;
-        }
-        t->next=(struct node *) malloc(sizeof(struct node));
-        t->next->data=e;
-        t->next->next=NULL;
-        t->next->prev=t;
+        return 0;
     }
 }
 
-void disp(){
-	struct node *t;
-	if(head==NULL){
-		printf("\nDOUBLY LINKED LIST IS EMPTY!!");
-	}
-	else{
-		t=head;
-		printf("\n");
-		while(t!=NULL){
-			printf("%d\t",t->data);
-			t=t->next;
-		}
-	}
-}
-
-void delete(int e){
-    struct node *t;
-    if(head==NULL){
-        printf("\nDOUBLY LINKED LIST IS EMPTY!!");
-    }
-    else if(head->data==e && head->next==NULL){
-        head=NULL;
-    }
-    else if(head->data==e){
-        head=head->next;
-        head->prev=NULL;
-    }
-    else{
-        t=head->next;
-        while(t!=NULL && t->data!=e){
-            t=t->next;
+char conversion(){
+    char infix[MAX],postfix[MAX];
+    printf("\nENter infix ecpression : ");
+    scanf("%s",infix);
+    int i=0,j=0;
+    char temp,k;
+    while(infix[i]!='\0'){
+        temp=infix[i];
+        switch(temp){
+            case '(':
+                push(temp);
+                break;
+            case ')':
+                k=pop();
+                while(k!='('){
+                    postfix[j]=k;
+                    j++;
+                    k=pop();
+                }
+                break;
+            case '^':
+            case '*':
+            case '/':
+            case '+':
+            case '-':
+                while(precedence(stk[top]) >= precedence(temp)){
+                    postfix[j] =pop();
+                    j++;
+                }
+                push(temp);
+                break;
+            default:
+            postfix[j]=temp;
+            j++;
         }
-        if(t==NULL){
-            printf("\nELEMENT NOT FOUND!!");
-        }
-        else if(t->next==NULL){
-            t->prev->next=NULL;
-        }
-        else{
-            t->prev->next=t->next;
-            t->next->prev=t->prev;
-        }
+        i++;
     }
-}
-int menu(){
-	int ch;
-	printf("\n---DOUBLY LINKED LIST OPERATIONS---\n");
-	printf("1-Insert\n2-Delete\n3-Display\nENTER YOUR CHOICE: ");
-	scanf("%d",&ch);
-	
-	return ch;
-}
-
-void process(){
-	int ch,a;
-	for(ch=menu();ch!=4;ch=menu()){
-		switch(ch){
-			case 1:
-				printf("\nEnter the element to insert: ");
-				scanf("%d",&a);
-				insert(a);
-				break;
-			case 2:
-				printf("\nEnter the element to delete: ");
-				scanf("%d",&a);
-				delete(a);
-				break;
-			case 3:
-				disp();
-				break;
-			default:
-				printf("\nWRONG CHOICE!!");
-				break;
-		}
-	}
-}
-
-int main(){
-	process();
-	return 0;
 }

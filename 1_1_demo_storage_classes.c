@@ -22,7 +22,8 @@ void register_var()
 
 int main()
 {
-	int z=20;//z is local variable to main()
+	int y,z=20;//z is local variable to main()
+	printf("\n-Local variable-\nValues of y = %d and z = %d",y,z);
 	auto_var();
 	static_var();
 	static_var();

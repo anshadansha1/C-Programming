@@ -1,4 +1,4 @@
-//PROGRAM 9_31 :Write a program to create a singly linked list of n nodes and display it in reverse order.
+//PROGRAM 9_4 :Write a program to create a singly linked list of n nodes and display it in reverse order.
 #include<stdio.h>
 #include<malloc.h>
 

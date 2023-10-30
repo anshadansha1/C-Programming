@@ -1,5 +1,4 @@
-//PROGRAM 12_1 : Binary search tree insertion and display Traversal using inorder, preorder and postorder using recursion
-
+//PROGRAM 12_4 : Binary search tree insertion and display post-order without using recursion
 #include<stdio.h>
 #include<malloc.h>
 
@@ -9,16 +8,26 @@ struct node{
     struct node *right;
 };
 typedef struct node tree;
-tree *root;
+
+struct stack{
+    tree *r;
+    int count;
+    struct stack *next;
+};
+typedef struct stack stack;
+tree *root=NULL;
+stack *top=NULL;
+
 void insert();
-void inorder();
-void preorder();
+void push();
+tree * pop();
 void postorder();
+void postorder_wur();
 int menu();
 
 int main(){
     int ch,e,n,i;
-    for(ch=menu();ch!=5;ch=menu()){
+    for(ch=menu();ch!=4;ch=menu()){
         switch(ch){
             case 1:
                 printf("\nEnter how many elements to insert(n) : ");
@@ -30,18 +39,14 @@ int main(){
                 }
                 break;
             case 2:
-                printf("\n\nInorder of entered BST is : ");
-                inorder(root);
-                break;
-            case 3:
-                printf("\n\nPreorder of entered BST is : ");
-                preorder(root);
-                break;
-            case 4:
-                printf("\n\nPostorder of entered BST is : ");
+                printf("\n\npostorder  of entered BST is : ");
                 postorder(root);
                 break;
-            case 5:
+            case 3:
+                printf("\n\npostorder Without Using Reccursion of entered BST is : ");
+                postorder_wur(root);
+                break;
+            case 4:
                 printf("\nExiting....");
                 break;
             default:
@@ -56,7 +61,7 @@ int main(){
 }
 int menu(){
     int ch;
-    printf("\nBST OPERATIONS ->.\n1.INSERT.\n2.INORDER.\n3.PREORDER.\n4.POSTORDER.\n5.EXIT");
+    printf("\nBST OPERATIONS ->.\n1.INSERT.\n2.POSTORDER(Using reccusrion).\n3.POSTORDER(Without using reccusrion).\n4.EXIT");
     printf("\nEnter any choice :");
     scanf("%d",&ch);
     return ch;
@@ -96,21 +101,30 @@ void insert(int e){
         }
     }
 }
-void inorder(tree *r){
-    
-    if(r!=NULL){
-        inorder(r->left);
-        printf("\t%d",r->data);
-        inorder(r->right);
-    }
+
+void push(tree *t,int c){
+    stack *temp=(stack *)malloc(sizeof(stack));
+    temp->r=t;
+    temp->count=c;
+    temp->next=top;
+    top=temp;
 }
-void preorder(tree *r){
-    
-    if(r!=NULL){
-        printf("\t%d",r->data);
-        preorder(r->left);
-        preorder(r->right);
+tree * pop(){
+    tree *t=NULL;
+    if(top!=NULL){
+        t=top->r;
+        top=top->next;
     }
+    return t;
+}
+int  peek()
+{
+    int c = -1;
+    if(top != NULL)
+    {
+           c = top->count;
+    }
+    return c;
 }
 void postorder(tree *r){
     
@@ -120,3 +134,30 @@ void postorder(tree *r){
         printf("\t%d",r->data);
     }
 }
+
+void postorder_wur(tree *root){
+    tree *t;
+    int c;
+    for(t=root;t!=NULL;t=t->left){
+        push(t,1);
+    }
+    c=peek();
+    t=pop();
+    while(t!=NULL){
+        if(c==1)
+        {
+            push(t,2);
+            for(t=t->right;t!=NULL;t=t->left){
+               
+                push(t,1);
+            }
+        }
+        else if (c==2)
+        {
+            printf("\t%d",t->data);
+        }
+        c=peek();
+        t=pop();
+    }
+}
+

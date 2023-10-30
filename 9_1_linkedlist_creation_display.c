@@ -1,4 +1,4 @@
-//PROGRAM 9_28 :Demonstrate a linked list creation and display.
+//PROGRAM 9_1 :Demonstrate a linked list creation and display.
 #include<stdio.h>
 #include<malloc.h>
 
