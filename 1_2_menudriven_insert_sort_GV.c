@@ -68,7 +68,7 @@ void insertEl(){
 			printf("Enter the element to be inserted : ");
 			scanf("%d",&arr[size]);
 			size++;
-			printf("Element inserted successfully.\n");
+			
 		}
 	}
 	

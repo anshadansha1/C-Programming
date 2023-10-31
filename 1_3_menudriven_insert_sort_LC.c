@@ -12,7 +12,6 @@ void insertEl(int arr[], int *size) {
     		printf("Enter element to insert: ");
             scanf("%d", &element);
         	arr[(*size)++] = element;
-        	printf("Element inserted successfully.\n");
     	} else {		
         	printf("Array is full. Cannot insert more elements.\n");
     	}
@@ -115,7 +114,7 @@ int main() {
             default:
                 printf("Invalid choice. Please enter a valid option.\n");
         }
-    } while (choice != 5);
+    } while (choice != 6);
     
     return 0;
 }

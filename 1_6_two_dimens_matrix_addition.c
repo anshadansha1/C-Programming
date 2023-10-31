@@ -41,7 +41,7 @@ void subMat(int mat1[MAX_SIZE][MAX_SIZE], int mat2[MAX_SIZE][MAX_SIZE], int resu
     }
 }
 
-void multMat(int mat1[MAX_SIZE][MAX_SIZE], int mat2[MAX_SIZE][MAX_SIZE], int result[MAX_SIZE][MAX_SIZE], int rows1, int cols1, int rows2, int cols2) {
+void multMat(int mat1[MAX_SIZE][MAX_SIZE], int mat2[MAX_SIZE][MAX_SIZE], int result[MAX_SIZE][MAX_SIZE], int rows1, int cols1, int cols2) {
 	
     for (i = 0; i < rows1; i++) {
         for (j = 0; j < cols2; j++) {
@@ -99,37 +99,48 @@ int main() {
     inputMat(mat2, rows2, cols2);
 
     if (rows1 != rows2 || cols1 != cols2) {
-        printf("Matrix addition, subtraction, and multiplication are not possible.\n");
+        printf("\nMatrix addition, subtraction, and multiplication are not possible.\n");
     } else {
         // Addition
         addMat(mat1, mat2, result, rows1, cols1);
-        printf("Matrix Addition:\n");
+        printf("\nMatrix Addition:\n");
         dispMat(result, rows1, cols1);
 
         // Subtraction
         subMat(mat1, mat2, result, rows1, cols1);
-        printf("Matrix Subtraction:\n");
+        printf("\nMatrix Subtraction:\n");
         dispMat(result, rows1, cols1);
 
         // Multiplication
-        multMat(mat1, mat2, result, rows1, cols1, rows2, cols2);
-        printf("Matrix Multiplication:\n");
+        multMat(mat1, mat2, result, rows1, cols1, cols2);
+        printf("\nMatrix Multiplication:\n");
         dispMat(result, rows1, cols2);
     }
 
     // Determinant
     if (rows1 == cols1) {
         int det = determinant(mat1, rows1);
-        printf("Determinant of matrix 1: %d\n", det);
+        printf("\n\nDeterminant of matrix 1: %d\n", det);
+    } else {
+        printf("Determinant can only be calculated for square matrices.\n");
+    }
+        if (rows2 == cols2) {
+        int det = determinant(mat2, rows2);
+        printf("\nDeterminant of matrix 2: %d\n", det);
     } else {
         printf("Determinant can only be calculated for square matrices.\n");
     }
 
+
     // Transpose
     int transpose[MAX_SIZE][MAX_SIZE];
     transMat(mat1, transpose, rows1, cols1);
-    printf("Transpose of matrix 1:\n");
+    printf("\n\nTranspose of matrix 1:\n");
     dispMat(transpose, cols1, rows1);
+
+    transMat(mat2, transpose, rows2, cols2);
+    printf("\nTranspose of matrix 1:\n");
+    dispMat(transpose, cols2, rows2);
 
     return 0;
 }
