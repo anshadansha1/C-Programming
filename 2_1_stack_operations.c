@@ -1,4 +1,4 @@
-//PROGRAM 2_9: IMPLEMENT STACK OPERATIONS USING ARRAY
+//PROGRAM 2_1: IMPLEMENT STACK OPERATIONS USING ARRAY
 #include <stdio.h>
 #define MAX_SIZE 10
 
@@ -18,7 +18,7 @@ void push(int val)
 {
 	if(top==MAX_SIZE-1)
 	{
-		printf("\nStack is full.Cannot PUSH %d \n",&val);
+		printf("\nStack Overflow.Cannot PUSH %d \n",val);
 	}
 	else
 	{
@@ -31,7 +31,7 @@ void pop()
 {
 	if(top== -1)
 	{
-		printf("\nStack is empty.Cannot perform POP\n");
+		printf("\nStack Underflow.Cannot perform POP\n");
 	}
 	else
 	{
@@ -42,7 +42,7 @@ void peek()
 {
 	if(top== -1)
 	{
-		printf("\nStack is empty.Cannot perform PEEK\n");
+		printf("\nStack Underflow.Cannot perform PEEK\n");
 	}
 	else
 	{
@@ -52,7 +52,7 @@ void peek()
 
 int main()
 {
-	int choice,val,i;
+	int choice,val;
 	for(choice=menu();choice!=4;choice=menu())
 	{
 			switch(choice)

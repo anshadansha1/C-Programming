@@ -1,4 +1,4 @@
-//PROGRAM 5_16 : ADD TWO POLYNOMIALS USING ARRAY
+//PROGRAM 5_2 : ADD TWO POLYNOMIALS USING ARRAY
 #include <stdio.h>
 int n1,n2,n3,coef1[20],expon1[20],coef2[20],expon2[20],coef3[20],expon3[20];
 
@@ -8,11 +8,11 @@ void disp();
 void add();
 
 int main(){
-	int n;
+	int n=0;
 	n1=read(coef1,expon1,n);
 	sort(coef1,expon1,n1);
 	disp(coef1,expon1,n1);
-	
+	printf("\nEnter details of other polynomial to add ---->\n");
 	n2=read(coef2,expon2,n);
 	sort(coef2,expon2,n2);
 	disp(coef2,expon2,n2);

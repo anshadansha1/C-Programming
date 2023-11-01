@@ -1,4 +1,4 @@
-//PROGRAM 2_10:REVERSE A STRING USING STACK
+//PROGRAM 2_2:REVERSE A STRING USING STACK
 #include <stdio.h>
 #include <string.h>
 #define MAX_SIZE 100
@@ -27,7 +27,7 @@ void pop(){
 }
 void main(){
 	printf("\nEnter the string : ");
-	scanf("%s",&input);
+	scanf("%s",input);
 	push(input);
 	pop();
 }

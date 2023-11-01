@@ -1,4 +1,4 @@
-//PROGRAM 4_14 : DEFINE STRUCTURE FOR EMPLOYEES(search,sort and delete)
+//PROGRAM 4_2 : DEFINE STRUCTURE FOR EMPLOYEES(search,sort and delete)
 #include <stdio.h>
 #include <string.h>
 #define MAX 100
@@ -10,16 +10,16 @@ struct Employee {
 	int dno; 
 };
 
-insertEmp(struct Employee employees[],int i,int n){
+void insertEmp(struct Employee employees[],int i,int n){
 	if(i==n){
 		printf("\nMemory is full.Cannot insert");
-		return;
+		return ;
 	}
 	printf("\nEnter the details of the Employee:----");
 	printf("\nEmployee Number : ");
 	scanf("%d",&employees[i].eno);
 	printf("Employee Name : ");
-	scanf("%s",&employees[i].ename);
+	scanf("%s",employees[i].ename);
 	printf("Employee Salary : ");
 	scanf("%lf",&employees[i].esal);
 	printf("Department Number : ");
@@ -27,7 +27,7 @@ insertEmp(struct Employee employees[],int i,int n){
 	
 }
 
-searchEmpByNo(struct Employee employees[],int n,int eno){
+void searchEmpByNo(struct Employee employees[],int n,int eno){
 	int i;
 	for(i=0;i < n;i++){
 		if(employees[i].eno==eno){
@@ -39,7 +39,7 @@ searchEmpByNo(struct Employee employees[],int n,int eno){
 	printf("Searched Employee with empno %d NOT FOUND.\n",eno);
 }
 
-sortEmpByName(struct Employee employees[],int n){
+void sortEmpByName(struct Employee employees[],int n){
 	int i,j;
 	for(i=0;i < n - 1;i++){
 		for(j=0;j < n - i - 1;j++){
@@ -54,7 +54,7 @@ sortEmpByName(struct Employee employees[],int n){
 }
 
 
-sortEmpBySal(struct Employee employees[],int n){
+void sortEmpBySal(struct Employee employees[],int n){
 	int i ,j;
 	for (i=0; i < n - 1;i++){
 		for(j=0;j < n - i -1;j++){
@@ -68,7 +68,7 @@ sortEmpBySal(struct Employee employees[],int n){
 	}
 }
 
-deleteEmpByNum(struct Employee employees[],int n,int eno){
+int deleteEmpByNum(struct Employee employees[],int n,int eno){
 	int i,j;
 	for(i=0 ; i < n ; i++){
 		if(employees[i].eno==eno){
@@ -84,7 +84,7 @@ deleteEmpByNum(struct Employee employees[],int n,int eno){
 	return n;
 }
 
-displayEmp(struct Employee employees[],int n){
+void displayEmp(struct Employee employees[],int n){
 	int i;
 	printf("Employee Details : \n");
 	printf("ENO\tENAME\tESALARY\t\tDNO\n");

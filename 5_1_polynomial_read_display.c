@@ -1,4 +1,4 @@
-//PROGRAM 5_15 : READ A POLYNOMIAL AND DISPLAY IT USING ARRAY
+//PROGRAM 5_1 : READ A POLYNOMIAL AND DISPLAY IT USING ARRAY
 #include <stdio.h>
 
 int read();
@@ -6,7 +6,7 @@ void sort();
 void disp();
 
 int main(){
-	int n,coef[20],expon[20];
+	int n=0,coef[20],expon[20];
 	n=read(coef,expon,n);
 	disp(coef,expon,n);
 	return 0;

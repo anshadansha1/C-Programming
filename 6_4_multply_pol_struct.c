@@ -1,4 +1,4 @@
-//PROGRAM 6_20 : Multiply two polynomials 
+//PROGRAM 6_4 : Multiply two polynomials 
 #include<stdio.h>
 struct poly
 {
@@ -41,7 +41,7 @@ void disp(struct poly p[], int n)
 {
 	int i;
 	sort(p,n);
-	printf("\nExponent is: ");
+	printf("\nPolynomial is: ");
 	for(i=0;i<n;i++)
 	{
         if(p[i].expo==0)
@@ -122,10 +122,10 @@ int main()
 {
 	struct poly p1[10], p2[10], p3[20];
 	int n1, n2;
-	printf("\nEnter First Polynomial:");
+	printf("\nEnter the details of First Polynomial--->\n");
 	n1=read(p1);
 	disp(p1,n1);
-	printf("\nEnter Second Polynomial:");
+	printf("\n\nEnter the details of  Second Polynomial--->\n");
 	n2=read(p2);
 	disp(p2,n2);
 	printf("\nProduct\n-------");

@@ -1,4 +1,4 @@
-//PROGRAM 4_13 : DEFINE STRUCTURE FOR DATES(PROVIDE FUNCTIONS FOR READING,DISPLAYING AND COMPARING TWO DATES )
+//PROGRAM 4_1 : DEFINE STRUCTURE FOR DATES(PROVIDE FUNCTIONS FOR READING,DISPLAYING AND COMPARING TWO DATES )
 #include<stdio.h>
 
 struct Date
@@ -8,11 +8,11 @@ struct Date
 
 void readDate(struct Date *date) {
 
-    printf("Enter day of date : ");
+    printf("\nEnter day of date(dd) : ");
     scanf("%d",&(*date).day);
-    printf("\nEnter month of date : ");
+    printf("\nEnter month of date(mm) : ");
     scanf("%d",&(*date).month);
-    printf("\nEnter year of date : ");
+    printf("\nEnter year of date(yyyy) : ");
     scanf("%d",&(*date).year);
 }
 
@@ -27,7 +27,7 @@ int isDateEqual(struct Date d1, struct Date d2 )
 int main() {
 
     struct Date d1,d2;
-	printf("Enter details of First date (dd/mm/yyyy) \n");
+	printf("\nEnter details of First date (dd/mm/yyyy) \n");
     readDate(&d1);
     printf("\nEnter details of Second date (dd/mm/yyyy) \n");
     readDate(&d2);

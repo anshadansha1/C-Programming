@@ -1,4 +1,4 @@
-//PROGRAM 6_17 : Read a polynomial and display it using structure array 
+//PROGRAM 6_2 :Add two polynomials using structure
 #include<stdio.h>
 struct poly{
     int coef;
@@ -8,12 +8,20 @@ struct poly{
 int read();
 void sort();
 void disp();
+int add();
 
 int main(){
-    struct poly p[10];
-    int n;
-    n=read(p);
-    disp(p,n);
+    struct poly p1[10],p2[10],p3[10];
+    int n1,n2,n3;
+	printf("\nEnter details of FIRST polynomial to add ---->\n");
+    n1=read(p1);
+    disp(p1,n1);
+	printf("\n\nEnter details of SECOND polynomial to add ---->\n");
+    n2=read(p2);
+    disp(p2,n2);
+    printf("\n\nAdding the given two polynomials............");
+    n3=add(p1,p2,p3,n1,n2);
+    disp(p3,n3);
     return 0;
 }
 
@@ -87,4 +95,49 @@ void disp(struct poly p[],int n){
 		}
 	}
 
+}
+
+int add(struct poly p1[10], struct poly p2[10], struct poly p3[10], int n1, int n2)
+{
+    int i=0, j=0, k=0;
+    while (i < n1 && j < n2) 
+    {
+        if (p1[i].expon== p2[j].expon) 
+        {
+            p3[k].coef = p1[i].coef + p2[j].coef;
+            p3[k].expon = p1[i].expon;
+            i++;
+            j++;
+            k++;
+        }
+        else if (p1[i].expon > p2[j].expon)
+        {
+            p3[k].coef = p1[i].coef;
+            p3[k].expon = p1[i].expon;
+            i++;
+            k++;
+        }
+        else 
+        {
+            p3[k].coef = p2[j].coef;
+            p3[k].expon = p2[j].expon;
+            j++;
+            k++;
+        }      
+    }
+    while (i < n1) 
+    {
+        p3[k].coef = p1[i].coef;
+        p3[k].expon = p1[i].expon;
+        i++;
+        k++;
+    }
+    while (j < n2) 
+    {
+        p3[k].coef = p2[j].coef;
+        p3[k].expon = p2[j].expon;
+        j++;
+        k++;
+    }
+    return (k);
 }

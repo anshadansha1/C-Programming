@@ -1,4 +1,4 @@
-//PROGRAM 6_18 :18.Add two polynomials using structure
+//PROGRAM 6_3 : Subtract two polynomials using structure
 #include<stdio.h>
 struct poly{
     int coef;
@@ -8,17 +8,20 @@ struct poly{
 int read();
 void sort();
 void disp();
-int add();
+void minusof();
+int subtract();
 
 int main(){
     struct poly p1[10],p2[10],p3[10];
     int n1,n2,n3;
+	printf("\nEnter details of FIRST polynomial to subtract ---->\n");
     n1=read(p1);
     disp(p1,n1);
+	printf("\n\nEnter details of SECOND polynomial to subtract ---->\n");
     n2=read(p2);
     disp(p2,n2);
-    printf("\nAdding the given two polynomials............");
-    n3=add(p1,p2,p3,n1,n2);
+    printf("\n\nSubtracting the first polynomial from second............\n");
+    n3=subtract(p1,p2,p3,n1,n2);
     disp(p3,n3);
     return 0;
 }
@@ -95,8 +98,16 @@ void disp(struct poly p[],int n){
 
 }
 
-int add(struct poly p1[10], struct poly p2[10], struct poly p3[10], int n1, int n2)
+void minusof(struct poly p[10],int n){
+	int i;
+	for(i=0;i<n;i++){
+		p[i].coef=-p[i].coef;
+	}	
+}
+
+int subtract(struct poly p1[10], struct poly p2[10], struct poly p3[10], int n1, int n2)
 {
+	minusof(p2,n2);
     int i=0, j=0, k=0;
     while (i < n1 && j < n2) 
     {

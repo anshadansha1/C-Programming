@@ -1,6 +1,8 @@
-//PROGRAM 3_11 : CONVERT AN EXPRESSION FROM INFIX TO POSTFIX USING STACK 
+//PROGRAM 3_2 : EVALUATION OF EXPRESSION USING STACK
+
 #include <stdio.h>
 #include <string.h>
+#include <math.h>
 
 #define MAX 10
 
@@ -30,7 +32,7 @@ int precedence(char k) {
     }
 }
 
-void conversion() {
+char conversion() {
     char infix[MAX], postfix[MAX];
     printf("Enter infix expression: ");
     scanf("%s", infix);
@@ -76,11 +78,46 @@ void conversion() {
     }
     postfix[j] = '\0';
 
-    printf("Postfix expression:");
+    printf("\nPostfix expression:");
     printf("%s",postfix);
+
+    int operand1, operand2;
+    i = 0;
+    while (postfix[i] != '\0') {
+        if (isdigit(postfix[i])) {
+            push(postfix[i] - '0'); // Convert char digit to int and push to stack
+        } else {
+            operand2 = pop();
+            operand1 = pop();
+            switch (postfix[i]) {
+                case '^':
+                    push(pow(operand1, operand2));
+                    break;
+                case '*':
+                    push(operand1 * operand2);
+                    break;
+                case '/':
+                    push(operand1 / operand2);
+                    break;
+                case '+':
+                    push(operand1 + operand2);
+                    break;
+                case '-':
+                    push(operand1 - operand2);
+                    break;
+            }
+        }
+        i++;
+    }
+
+    int evaluationResult = pop();
+    printf("\nExpression Evaluation Result: %d\n", evaluationResult);
 }
 
 int main() {
     conversion();
     return 0;
 }
+
+
+
