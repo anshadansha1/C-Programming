@@ -1,4 +1,4 @@
-//PROGRAM 7_23 :Use calloc to read n numbers and find the mode.
+//PROGRAM 7_3 :Use calloc to read n numbers and find the mode.
 #include<stdio.h>
 #include<malloc.h>
 int i,j;

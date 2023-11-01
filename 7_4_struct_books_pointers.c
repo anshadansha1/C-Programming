@@ -1,4 +1,4 @@
-//PROGRAM 7_24 :Declare a structure for Books having author_name and book_name. Create an array of books using a pointer variable. Provide functions for reading n books and displaying the same using pointers.
+//PROGRAM 7_4 :Declare a structure for Books having author_name and book_name. Create an array of books using a pointer variable. Provide functions for reading n books and displaying the same using pointers.
 #include<stdio.h>
 #include<malloc.h>
 struct books{

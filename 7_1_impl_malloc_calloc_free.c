@@ -1,4 +1,4 @@
-//PROGRAM 7_21 : 21.Implement a) malloc , b) calloc and c) free functions 
+//PROGRAM 7_1 : Implement a) malloc , b) calloc and c) free functions 
 #include<stdio.h>
 #include<malloc.h>
 int main(){

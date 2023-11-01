@@ -1,4 +1,4 @@
-//PROGRAM 7_25 :Use realloc to implement varchar for any length.
+//PROGRAM 7_5 :Use realloc to implement varchar for any length.
 #include<stdio.h>
 #include<malloc.h>
 

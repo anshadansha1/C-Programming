@@ -1,4 +1,4 @@
-//PROGRAM 7_22 : Use malloc to read n integers and find the mean.
+//PROGRAM 7_2 : Use malloc to read n integers and find the mean.
 #include<stdio.h>
 #include<malloc.h>
 int main(){
