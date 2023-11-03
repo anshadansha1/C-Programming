@@ -1,73 +1,25 @@
-#include <stdio.h>
-#include <string.h>
-#include <math.h>
-
-#define MAX 100
-
-char stk[MAX];
-int top=-1;
-
-void push(char x){
-    top++;
-    stk[top]=x;
-} 
-
-char pop(){
-    char y=stk[top];
-    top--;
-    return y;
+struct node *i = head;
+struct node *t1 = head;
+while(i->next != NULL)
+{
+struct node *t2 = i;
+struct node *j = i->next;
+while(j != NULL)
+{
+if(i->data > j->data)
+{
+t2->next = j->next;
+if(head == i)
+t1 = head = j;
+else
+t1->next = j;
+j->next = i;
+i = t1;
 }
-
-int precedence(char k){
-    if(k=='^'){
-        return 3;
-    }
-    else if (k=='*' || k=='/'){
-        return 2;
-    }
-    else if(k=='+' || k=='-'){
-        return 1;
-    }
-    else{
-        return 0;
-    }
+else
+t2 = j;
+j = j->next;
 }
-
-char conversion(){
-    char infix[MAX],postfix[MAX];
-    printf("\nENter infix ecpression : ");
-    scanf("%s",infix);
-    int i=0,j=0;
-    char temp,k;
-    while(infix[i]!='\0'){
-        temp=infix[i];
-        switch(temp){
-            case '(':
-                push(temp);
-                break;
-            case ')':
-                k=pop();
-                while(k!='('){
-                    postfix[j]=k;
-                    j++;
-                    k=pop();
-                }
-                break;
-            case '^':
-            case '*':
-            case '/':
-            case '+':
-            case '-':
-                while(precedence(stk[top]) >= precedence(temp)){
-                    postfix[j] =pop();
-                    j++;
-                }
-                push(temp);
-                break;
-            default:
-            postfix[j]=temp;
-            j++;
-        }
-        i++;
-    }
+t1 = i;
+i = i->next;
 }

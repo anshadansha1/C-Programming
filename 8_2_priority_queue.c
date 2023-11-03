@@ -1,4 +1,4 @@
-//PROGRAM 8_1 :Implement priority queue
+//PROGRAM 8_2 :Implement priority queue
 #include <stdio.h>
 void heaptree(int a[], int n, int e)
 {
