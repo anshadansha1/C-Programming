@@ -3,6 +3,7 @@
         "stdio.h": "c",
         "windows.h": "c",
         "stdlib.h": "c",
-        "malloc.h": "c"
+        "malloc.h": "c",
+        "conio.h": "c"
     }
 }
