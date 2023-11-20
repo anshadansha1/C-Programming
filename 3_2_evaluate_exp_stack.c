@@ -4,6 +4,7 @@
 #include <string.h>
 #include <math.h>
 
+
 #define MAX 10
 
 char stk[MAX];
